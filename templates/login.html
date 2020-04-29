@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/styles.min.css">
+</head>
+
+<body>
+
+	<!--==========================
+  Header
+  ============================-->
+  <header id="header">
+    <div class="container">
+
+  {% with messages =get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for c,m in messages %}
+
+            <div class="alert alert-{{ c }}">
+            <a href="#" class="close" data-dismiss='alert' aria-label="close">&times;</a>
+
+                {{m}}
+            </div>
+
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+     
+
+     
+    </div>
+  </header><!-- #header -->
+
+
+
+
+
+
+    <div class="container" style="height: 100px;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-lg-4" style="border: 5px solid white;padding: 40px 30px;box-shadow: -5px 15px 62px 14px rgba(0,0,0,0.75);">
+                <div class="row">
+                    <div class="col" style="width: 210px;">
+                        <h1 style="margin: 0px 65px 0px;color: rgb(9,33,5);font-size: 31px;">Enter Details</h1>
+                    </div>
+                </div>
+                <form method="post">
+                    <div class="form-group"><label style="color: rgb(9,26,2);font-size: 17px;">Email</label><input class="form-control" type="email" placeholder="Email" name="email"></div>
+                    <div class="form-group"><label style="color: (9,26,2);font-size: 17px;">Password</label><input class="form-control form-control" type="password" placeholder="Password" name="password"></div>
+                    <div class="form-group"><label>Select Account Type</label><select class="form-control" name="jobtype" ><optgroup label="Select" ><option value="00" selected>Manager</option><option value="11">Corporate Customer</option><option value="22">Employee</option></optgroup></select></div><button class="btn btn-primary btn-block" type="submit" style="background-color: rgb(5,30,11);margin: 6px;font-size: 22px;">LOG IN</button></form><a href="signup"
+                    style="color: rgb(4,7,5);font-size: 20px;">Dont have a account? SIGN UP</a></div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

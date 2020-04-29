@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Stock</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+
+<body style="background-color: rgb(134,191,188);font-size: 17px;">
+    <div>
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="padding: 16px;font-size: 19px;">
+            <div class="container"><a class="navbar-brand" href="dashboard_m" style="font-size: 40px;">Pharmacy</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div
+                    class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="dashboard_m">Dashboard</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="stock_m">Stock</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="order_list_m">Order List</a></li>
+                        
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="place_order_m">Place Order</a></li>
+						<li class="nav-item" role="presentation"><a class="nav-link" href="products_m">Products</a></li>
+                        <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Others</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="profile_m">Profile</a><a class="dropdown-item" role="presentation" href="corporate_order_m">Corporate Customer Orders</a><a class="dropdown-item" role="presentation" href="selling_reports_m">Selling Reports</a><a class="dropdown-item" role="presentation" href="logout">Logout</a></div>
+                        </li>
+                    </ul>
+            </div>
+    </div>
+    </nav>
+    </div>
+    <div class="container" style="height: 27px;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+				<form method="post">
+					<div class="row">
+						<div class="col"><label class="col-form-label" style="font-size: 20px;color: rgb(0,0,0);">Product ID</label></div>
+					</div>
+					<div class="row">
+						<div class="col"><input type="search" name="productid" style="margin: 0px 0px 10px 0px;"></div>
+					</div>
+					<div class="row">
+						<div class="col"><button class="btn btn-primary" type="submit" name="bt" value="bt1" style="margin: 0px 0px 10px 0px ;">Search</button></div>
+					</div>
+				</form>
+            </div>
+            <div class="col">
+				<form method="post">
+					<div class="row">
+						<div class="col"><label class="col-form-label" style="color: rgb(0,0,0);font-size: 21px;">Expiry Date Before:</label></div>
+					</div>
+					<div class="row">
+						<div class="col"><input type="date" name="expirydate" style="margin: 0px 0px 10px 0px;"></div>
+					</div>
+					<div class="row">
+						<div class="col"><button class="btn btn-primary" type="submit" name="bt" value="bt2" style="margin: 0px 0px 10px 0px;">Search</button></div>
+					</div>
+				</form>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Company Name</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Expiry Date</th>
+						<th>Column No.</th>
+						<th>Shelf</th>
+                    </tr>
+                </thead>
+                <tbody>
+					{% for row in table %}
+				    <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+					<td>{{row[4]}}</td>
+					<td>{{row[5]}}</td>
+					<td>{{row[6]}}</td>
+				    </tr>
+					{% endfor %}
+				</tbody>
+            </table>
+        </div>
+    </div>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

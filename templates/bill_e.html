@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>bill_e</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+
+<body style="background-color: rgb(220,190,112);">
+    
+	
+	<!--==========================
+  Header
+  ============================-->
+  <header id="header">
+    <div class="container">
+
+  {% with messages =get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for c,m in messages %}
+
+            <div class="alert alert-{{ c }}">
+            <a href="#" class="close" data-dismiss='alert' aria-label="close">&times;</a>
+
+                {{m}}
+            </div>
+
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+     
+
+     
+    </div>
+  </header><!-- #header -->
+	
+	
+	
+	<div class="container">
+        <h1 style="margin: 30px 0px 20px 480px;">BILL</h1>
+    </div>
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Company Name</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+					{% for row in table %}
+						<tr>
+						<td>{{row[0]}}</td>
+						<td>{{row[1]}}</td>
+						<td>{{row[2]}}</td>
+						<td>{{row[5]}}</td>
+						<td>{{row[3]}}</td>
+						<td>{{row[6]}}{{row[7]}}</td>
+						</tr>
+						{% endfor %}
+				</tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <p style="font-size: 23px;margin: 20px 0px 20px 10px;">TOTAL AMOUNT: RS. {{t_amount}}</p>
+    </div>
+    <div class="container">
+        <form method="post"><button class="btn btn-primary" type="submit" name="bt" value="bill" style="padding: 10px;margin: 20px 0px 0px 20px ;">GENERATE BILL</button><button class="btn btn-primary" type="submit" name="bt" value="add" style="padding: 10px;margin: 20px 0px 0px 40px;background-color: rgb(0,123,255);">ADD MORE TO LIST</button><button class="btn btn-primary" type="submit" name="bt" value="discard" style="padding: 10px;margin: 20px 0px 0px 40px;background-color: rgb(0,123,255);">DISCARD</button></form>
+    </div>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

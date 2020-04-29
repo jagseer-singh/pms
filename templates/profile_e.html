@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Profile</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+
+<body style="background-color:rgb(134,191,188);font-size: 17px;">
+    <div>
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="padding: 16px;font-size: 19px;">
+            <div class="container"><a class="navbar-brand" href="profile_e" style="font-size: 40px;">Pharmacy</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div
+                    class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="profile_e">Profile</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="selling_e">Selling</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="order_list_e">Order List</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="received_e">Received&nbsp;</a></li>
+                        <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Others</a>
+							<div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="co_order_list_e">Corporate Customer Order List</a><a class="dropdown-item" role="presentation" href="co_selling_e">Send Order to Corporate Customer</a><a class="dropdown-item" role="presentation" href="logout">Logout</a></div>
+                        </li>
+                    </ul>
+            </div>
+    </div>
+    </nav>
+    </div>
+    <div class="container" style="height: 80px;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+			<H1 style="color: rgb(0,0,0); width:700px">Welcome, {{info[1]}}</H1>
+                <p style="color: rgb(0,0,0);font-size: 32px;">
+				
+				Email: {{info[2]}}</br>
+				Mobile No.: {{info[3]}}</br>
+				</p>
+			</div>
+            <div class="col" style="width: 100;">
+			</div>
+            <div class="col" style="width: 400;">
+                <h5 style="color: rgb(0,0,0);">Products having expiry in the next 7 days<br>(These Products should be discarded immediately)</h5>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                                <tr>
+                                    <th style="color: rgb(0,0,0);">Product ID</th>
+                                    <th style="color: rgb(0,0,0);">Expiry Date</th>
+                                    <th style="color: rgb(0,0,0);">Column No.</th>
+                                    <th style="color: rgb(0,0,0);">Shelf No.</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+							{% for row in table %}
+								<tr>
+									<td>{{row[0]}}</td>
+									<td>{{row[1]}}</td>
+									<td>{{row[2]}}</td>
+									<td>{{row[3]}}</td>
+								</tr>
+							{% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

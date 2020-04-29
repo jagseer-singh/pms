@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Signup</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/styles.min.css">
+</head>
+
+<body>
+	
+	<!--==========================
+  Header
+  ============================-->
+  <header id="header">
+    <div class="container">
+
+  {% with messages =get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for c,m in messages %}
+
+            <div class="alert alert-{{ c }}">
+            <a href="#" class="close" data-dismiss='alert' aria-label="close">&times;</a>
+
+                {{m}}
+            </div>
+
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+     
+
+     
+    </div>
+  </header><!-- #header -->
+
+
+    <div class="container" style="height: 30px;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-lg-4" style="border: 5px solid white;padding: 40px 30px;box-shadow: -5px 15px 62px 14px rgba(0,0,0,0.75);">
+                <div class="row">
+                    <div class="col" style="width: 210px;">
+                        <h1 style="margin: 0px 65px 0px;color: rgb(9,33,5);font-size: 31px;">Enter Details</h1>
+                    </div>
+                </div>
+                <form method="post">
+                    <div class="form-group"><label style="color: rgb(9,26,2);font-size: 17px;">Username</label><input class="form-control getinput" type="text" placeholder="Name" name="username" required></div>
+                    <div class="form-group"><label style="color: rgb(9,26,2);font-size: 17px;">Email</label><input class="form-control getinput" type="email" placeholder="Email" name="email" required></div>
+                    <div class="form-group"><label style="color: rgb(9,26,2);font-size: 17px;">Mobile No.</label><input class="form-control getinput" type="number" placeholder="Mobile No." name="mobile" required minlength="10" maxlength="10" size="10 pattern=".{10,11}" "></div>
+					<div class="form-group"><label>Select Account Type</label><select class="form-control" name="accounttype" ><optgroup label="Select" ><option value="11" selected>Corporate Customer</option><option value="22">Employee</option></optgroup></select></div>
+                    <div class="form-group"><label style="color: (9,26,2);font-size: 17px;">Password</label><input class="form-control getinput"  type="password" placeholder="Password" name="password" required ></div><label style="color: (9,26,2);font-size: 17px;">Re-Enter Password</label><input class="form-control getinput"
+                        type="password" placeholder="Password" name="confirm_password" required ><button class="btn btn-primary btn-block" type="submit" style="background-color: rgb(5,30,11);margin: 6px;font-size: 22px;">Sign Up</button></form><a href="login" style="color: rgb(4,7,5);font-size: 20px;">Have an account? LOG IN</a></div>
+            <div
+                class="col"></div>
+    </div>
+    </div>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

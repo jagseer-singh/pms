@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Order List</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+
+<body style="background-color: rgb(134,191,188);">
+    
+	<!--==========================
+  Header
+  ============================-->
+  <header id="header">
+    <div class="container">
+
+  {% with messages =get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for c,m in messages %}
+
+            <div class="alert alert-{{ c }}">
+            <a href="#" class="close" data-dismiss='alert' aria-label="close">&times;</a>
+
+                {{m}}
+            </div>
+
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+     
+
+     
+    </div>
+  </header><!-- #header -->
+	
+	
+	<div>
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="padding: 16px;font-size: 19px;">
+            <div class="container"><a class="navbar-brand" href="#" style="font-size: 40px;">Pharmacy</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div
+                    class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="profile_c">Profile</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="place_order_c">Place Order</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="co_order_list_c">Order List</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="logout">Logout</a></li>
+                    </ul>
+            </div>
+    </div>
+    </nav>
+    </div>
+    
+	
+	<div class="container" style="height: 27px;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form method="post" name="1f"><label style="color: rgb(0,0,0);font-size: 24px;">Order ID</label><input class="form-control getinput" type="text" name="orderno" style="width: 226px;"><button class="btn btn-primary " type="submit" name="bt" value="button1" style="margin: 10px 0px 10px 0px;">Search</button></form>
+            </div>
+            <div class="col">
+                <form method="post" name="2f"><label style="color: rgb(0,0,0);font-size: 24px;">Order Date</label><input class="form-control getinput" name="orderdate" type="date"><button class="btn btn-primary" type="submit" name="bt" value="button2" style="margin: 10px 0px 10px 0px;">Search</button></form>
+            </div>
+            <div class="col">
+                <form method="post" name="3f"><label style="color: rgb(0,0,0);font-size: 25px;">Status</label><select class="form-control getinput" name="orderstatus"><optgroup label="Select"><option value="12" selected="">Pending</option><option value="13">Received</option></optgroup></select>
+                    <button class="btn btn-primary" type="submit" name="bt" value="button3"style="margin: 10px 0px 10px 0px;">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+						<th>Product ID</th>
+                        <th>Company Name</th>
+                        <th style="width: 156px;">Product Name</th>
+                        <th>Quantity</th>
+                        <th>Order Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+					{% for row in table %}
+				    <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+					<td>{{row[4]}}</td>
+					<td>{{row[5]}}</td>
+					<td>{{row[6]}}</td>
+				    </tr>
+					{% endfor %}
+				</tbody>
+            </table>
+        </div>
+    </div>
+	
+	
+	
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

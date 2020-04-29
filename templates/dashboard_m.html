@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+
+<body style="background-color: rgb(134,191,188);font-size: 17px;">
+    <div>
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="padding: 16px;font-size: 19px;">
+            <div class="container"><a class="navbar-brand" href="#" style="font-size: 40px;">Pharmacy</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div
+                    class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="dashboard_m">Dashboard</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="stock_m">Stock</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="order_list_m">Order List</a></li>
+                        
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="place_order_m">Place Order</a></li>
+						<li class="nav-item" role="presentation"><a class="nav-link" href="products_m">Products</a></li>
+                        <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Others</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="profile_m">Profile</a><a class="dropdown-item" role="presentation" href="corporate_order_m">Corporate Customer Orders</a><a class="dropdown-item" role="presentation" href="selling_reports_m">Selling Reports</a><a class="dropdown-item" role="presentation" href="logout">Logout</a></div>
+                        </li>
+                    </ul>
+            </div>
+    </div>
+    </nav>
+    </div>
+    <div class="container" style="height: 50px;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7" style="width: 800px;">
+                <div class="row" style="height: 90px;">
+                    <div class="col">
+                        <h5 style="color: rgb(0,0,0);">Products having expiry in the next 7 days<br>(These Products should be discarded immediately)</h5>
+                    </div>
+                </div>
+                <div class="row" style="width: 480px;">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="color: rgb(0,0,0);">Product ID</th>
+                                        <th style="color: rgb(0,0,0);">Expiry Date</th>
+                                        <th style="color: rgb(0,0,0);">Column No.</th>
+                                        <th style="color: rgb(0,0,0);">Shelf No.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+											{% for row in table1 %}
+										<tr>
+										<td>{{row[0]}}</td>
+										<td>{{row[1]}}</td>
+										<td>{{row[2]}}</td>
+										<td>{{row[3]}}</td>
+										<td>{{row[4]}}</td>
+										</tr>
+										{% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1" style="width: 50px;"></div>
+            <div class="col">
+                <div class="row" style="height: 90px;">
+                    <div class="col">
+                        <h5 style="color: rgb(0,0,0);">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Products
+                            Less than Threshold Value</h5>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="color: rgb(0,0,0);">Product ID</th>
+                                <th style="color: rgb(0,0,0);">Threshhold</th>
+                                <th style="color: rgb(0,0,0);">Stock Present</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+							{% for row in table2 %}
+								<tr>
+								<td>{{row[0]}}</td>
+								<td>{{row[1]}}</td>
+								<td>{{row[2]}}</td>
+								</tr>
+								{% endfor %}
+						</tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
