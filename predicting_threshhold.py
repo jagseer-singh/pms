@@ -8,6 +8,7 @@ Created on Mon Apr 27 02:29:11 2020
 import datetime
 import pickle
 import pyodbc
+
 def fnc():
     server = 'jagseer73.database.windows.net'
     database = 'pharmacy'
@@ -27,34 +28,47 @@ def fnc():
         temp=today - datetime.timedelta(days=i)
         days.append(temp)
     selling_data_x=[]
-    for i in pro: # i is product_id
+    cu.execute("Select * from selling_reports")
+    temp=cu.fetchall()
+
+    for i in pro:
         l=[]
-        for d in days: #d is selling date
-            cmd=("Select quantity from selling_reports where product_id=? and selling_date=?")
-            val=(i,d)
-            cu.execute(cmd,val)
-            temp=cu.fetchall()
-            q=0
-            for j in temp:
-                q=q+j[0]
-            l.append(q)
+        for j in days:
+            l.append(0)
         selling_data_x.append(l)
+    
+    for i in temp:
+        index=i[0]-101
+        day=today-i[1]
+        day=day.days
+        if day<4:
+            #print(day)
+            selling_data_x[index][3-day]+=i[2]
+    
     y_pred=Model.predict(selling_data_x)
+    #print(y_pred)
+    val1=[]
+    cu.execute("Select quantity,product_id from stock")
+    st_q=cu.fetchall()
+    qq=[0 for i in range(1,57)]
     for i in range(1,57):
         p_id=100+i
-        cmd=("update products set threshhold=? where product_id=?")
-        val=(int(y_pred[i-1][0]),p_id)
-        cu.execute(cmd,val)
-        cnxn.commit()
-        
-        cmd=("Select quantity from stock where product_id=?")
-        val=(p_id,)
-        cu.execute(cmd,val)
-        st=cu.fetchall()
-        q_present=0
-        for i in st:
-            q_present=q_present+i[0]
-        cmd="update products set stock_present=? where product_id=?"
-        val=(q_present,p_id)
-        cu.execute(cmd,val)
-        cnxn.commit()
+        th=int(y_pred[i-1][0])
+        r=(p_id,th)
+        val1.append(r)
+    
+    for i in st_q:
+        st_q_p=i[1]
+        index=st_q_p-101
+        qq[index] += i[0]
+
+    cu.executemany("update products set threshhold=? where product_id=?",val1)
+    cnxn.commit()
+    val2=[]
+    for i in range(1,57):
+        p_id=100+i
+        quant=qq[i-1]
+        tu=(quant,p_id)
+        val2.append(tu)
+    cu.executemany("update products set stock_present=? where product_id=?",val2)
+fnc()
