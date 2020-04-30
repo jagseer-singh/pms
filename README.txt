@@ -27,7 +27,7 @@ main.py: This is the main file which contains all the functions required to run 
 
 Manager Email ID: Manager123@gmail.com
 Password: Admin@123
-We have'nt created a signup page for manager because of security reasons there is only one manager for our pharmacy.  
+We have'nt created a signup page for manager because of security reasons so there is only one manager for our pharmacy.  
 
 
 If you want to run these files on your own pc the order is:
