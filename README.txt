@@ -23,7 +23,11 @@ training_model.py: Here a model is trained to predict threshold values for each 
 selling_predictor.pkl: The trained model is saved in this pickle file.
 predicting_threshold.py: Created Model is called to predict threshold value in this file.
 
-main.py: This is the main file which contains all the functions required to run the website.
+main.py: This is the main file which contains all the functions required to run the website.:
+
+Manager Email ID: Manager123@gmail.com
+Password: Admin@123
+We have'nt created a signup page for manager because of security reasons there is only one manager for our pharmacy.  
 
 
 If you want to run these files on your own pc the order is:
