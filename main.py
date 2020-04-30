@@ -1062,7 +1062,8 @@ def co_order_list_c():
                 orders=cur.fetchall()
     for i in orders:
         if i[6]=='Sent':
-	    i[6]='Recieved'	
+	    i[6]='Recieved'
+	
              
     return render_template('co_order_list_c.html',table=orders)
     
