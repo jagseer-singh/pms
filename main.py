@@ -30,7 +30,6 @@ predicting_threshhold.fnc()
 today=date.today()
 @app.route('/',methods=['GET','POST'])
 @app.route('/login',methods=['GET','POST'])
-
 def login():
     if (session.get('email')):
         session.pop('email', None)
