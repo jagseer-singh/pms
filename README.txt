@@ -18,7 +18,7 @@ Order in which you need to run the files:
 -pms/main.py
 
 Extra files:
-	We could not find any dataset for our project so we had to create databases.
+	We could not find any dataset for our project so we had to create datasets.
 
 	-Stock.csv and Stock.xlsx contains stock meaning the drugs availabe at the pharmacy.
 	-sql_scripts.sql contains SQL queries to create the required database and tables that are required for this project.
