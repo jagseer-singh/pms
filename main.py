@@ -1055,7 +1055,7 @@ def co_order_list_c():
                 cmd=("""SELECT cocustomer_order_list.order_id,products.product_id, products.company_name, products.product_name,
                    cocustomer_order_list.quantity, cocustomer_order_list.order_date,cocustomer_order_list.order_status 
                    FROM cocustomer_order_list
-                   INNER JOIN products ON cocustomer_order_list.product_id=products.product_id and order_status='Received' and c_id=?""")
+                   INNER JOIN products ON cocustomer_order_list.product_id=products.product_id and order_status='Sent' and c_id=?""")
                 val=(c_id,)
                 cur.execute(cmd,val)
                 orders=cur.fetchall()
