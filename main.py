@@ -672,7 +672,7 @@ def bill_e():
                     cnxn.commit()
                     #decrease stock
             items.clear()
-            flash('BILL GEN','success')    
+            flash('BILL GENERATED','success')    
             return redirect(url_for('selling_e'))
         elif info['bt']=="add":
             flash("ADD MORE",'success')
