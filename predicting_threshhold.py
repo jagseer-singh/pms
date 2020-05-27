@@ -42,7 +42,7 @@ def fnc():
         day=today-i[1]
         day=day.days
         if day<7:
-            #print(day)
+            
             selling_data_x[index][7-day]+=i[2]
     
 
