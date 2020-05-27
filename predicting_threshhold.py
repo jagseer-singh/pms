@@ -55,7 +55,7 @@ def fnc():
     for i in y_pred:
         if i[0]<30:
             i[0]=30
-        print(i)
+    
     val1=[]
     cu.execute("Select quantity,product_id from stock")
     st_q=cu.fetchall()
@@ -70,15 +70,15 @@ def fnc():
         st_q_p=i[1]
         index=st_q_p-101
         qq[index] += i[0]
-    print("c")
-    #cu.executemany("update products set threshhold=? where product_id=?",val1)
-    #cnxn.commit()
+    
+    cu.executemany("update products set threshhold=? where product_id=?",val1)
+    cnxn.commit()
     val2=[]
     for i in range(1,57):
         p_id=100+i
         quant=qq[i-1]
         tu=(quant,p_id)
         val2.append(tu)
-    print("d")
-    #cu.executemany("update products set stock_present=? where product_id=?",val2)
+    
+    cu.executemany("update products set stock_present=? where product_id=?",val2)
     cnxn.commit()
