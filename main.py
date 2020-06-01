@@ -190,7 +190,7 @@ def products_m():
         return redirect(url_for('login'))
     if session['type'] != "00":
         return redirect(url_for('login'))
-    
+    predicting_threshhold.fnc()
     cur=cnxn.cursor()
     cmd="select * from products"
     cur.execute(cmd)
